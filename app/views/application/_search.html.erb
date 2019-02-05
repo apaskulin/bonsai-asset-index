@@ -2,7 +2,7 @@
   <div class="search_bar">
     <div class="quick_search">
       <div class="search_field">
-        <%= search_field_tag :q, params[:q], placeholder: 'Add-ons, tags, authors...', class: 'extension_search_textfield' %>
+        <%= search_field_tag :q, params[:q], placeholder: 'Assets, tags, authors...', class: 'extension_search_textfield' %>
       </div>
 
       <%= hidden_field_tag :order, params[:order] if params[:order].present? %>

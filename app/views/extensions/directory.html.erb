@@ -1,21 +1,21 @@
-<%= provide(:title, "#{t('nouns.extension').pluralize.titleize} Directory") %>
-<%= provide(:description, "Browse and search Sensu #{t('nouns.extension').pluralize}. Learn how to use and create #{t('nouns.extension').pluralize} for configuring your infrastructure.") %>
+<%= provide(:title, "Bonsai - the Sensu #{t('nouns.extension').pluralize.titleize} Index") %>
+<%= provide(:description, "Discover and share Sensu #{t('nouns.extension').pluralize}. Learn how to use #{t('nouns.extension').pluralize} and created automated monitoring workflows.") %>
 <%= provide(:cta) do %>
-  <p>Extend Sensu using add-ons and <%= link_to "share your own", new_extension_path %> with the community</p>
+  <p>Welcome to Bonsai, the Sensu asset index. Discover and <%= link_to "share", new_extension_path %> Sensu assets for all your monitoring needs.</p>
 <% end %>
 
 <div class="page nobg">
   <div class="row extensions-features bottom-space standard-typography">
     <div class="medium-5 columns">
-      <header>New &amp; updated</header>
+      <header>Recently updated</header>
       <%= render "featured", extensions: @recently_updated_extensions %>
     </div>
     <div class="medium-5 columns">
-      <header>Noteworthy</header>
+      <header>Featured</header>
       <%= render "featured", extensions: @most_downloaded_extensions %>
     </div>
     <div class="medium-2 columns">
-      <header>Categories</header>
+      <header>Tags</header>
       <ul>
         <% @top_tags.each do |t| %>
           <li><%= link_to t.name, extensions_path(q: t.name) %></li>
@@ -26,9 +26,15 @@
 
   <div class="row share-cta standard-typography">
     <div class="medium-8 medium-offset-2 columns">
-      <header>Share your creations!</header>
-      <p class="bottom-space">Have a modification you've made to your own instance of Sensu? Package it up and share it with everyone!</p>
-      <p><%= link_to "Upload your #{t('nouns.extension')}", new_extension_path %></p>
+      <header>Learn about Sensu assets</header>
+      <p class="bottom-space">What is an asset?</p>
+      <p class="bottom-space">Assets are shareable, reusable packages that make it easy to deploy Sensu plugins. You can use assets to provide the plugins, libraries, and runtimes you need to create automated monitoring workflows with Sensu. See the <a href="http://docs.sensu.io/sensu-go/latest/reference/assets">docs</a> for more information about creating assets, and <%= link_to "share your #{t('nouns.extension')} with the Sensu Community", new_extension_path %>.</p>
+      <p class="bottom-space">How do I use an asset?</p>
+      <p class="bottom-space">To add an asset to Sensu, download the asset definition from Bonsai, then use <code>sensuctl create --file filename.json</code> to register the asset with Sensu. Once the asset is ready to use, see the asset page for instructions on configuring a Sensu workflow. See the <a href="http://docs.sensu.io/sensu-go/latest/guides/install-check-executables-with-assets">guide to using assets</a> to get started.</p>
+      <p class="bottom-space">Tiers</p>
+      <p class="bottom-space"><b>Community</b> - Open-source assets shared by the Sensu Community. Collaborate, share, and star your favorite assets with Bonsai.<br>
+      <b>Supported</b> - Open-source assets supported by Sensu Inc., including AWS, PagerDuty, and email plugins.<br>
+      <b>Enterprise</b> - Hosted assets for Sensu Enterprise customers. Enterprise assets require a <a href="http://docs.sensu.io/sensu-go/latest/getting-started/enterprise">Sensu Enterprise</a> license.</p>
     </div>
   </div>
 </div>
